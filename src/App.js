@@ -4,7 +4,9 @@ import './App.css';
 class App extends Component {
   state = {
     count: 0,
-    isOn: false
+    isOn: false,
+    x: null,
+    y: null
   };
 
   incrementCount = () => {
@@ -19,13 +21,25 @@ class App extends Component {
     }));
   };
 
+  componentWillMount() {
+    window.removeEventListener('mousemove', this.handleMouseMove);
+  }
+
   componentDidMount() {
     document.write(`You have clicked ${this.state.count} of times.`);
+    window.addEventListener('mousemove', this.handleMouseMove);
   }
 
   componentDidUpdate() {
     document.write(`You have clicked ${this.state.count} of times.`);
   }
+
+  handleMouseMove = event => {
+    this.setState({
+      x: event.pageX,
+      y: event.pageY
+    });
+  };
 
   render() {
     const { count } = this.state.count;
@@ -43,6 +57,9 @@ class App extends Component {
           }}
           onClick={this.toggleLight}
         />
+        <h2>Mouse position </h2>
+        <p>X position {this.state.x}</p>
+        <p>Y position {this.state.y}</p>
       </div>
     );
   }
