@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#   "precommit": "NODE_ENV=production lint-staged"
 
 ## Available Scripts
 

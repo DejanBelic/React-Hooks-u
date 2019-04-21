@@ -19,14 +19,20 @@ class App extends Component {
     }));
   };
 
+  componentDidMount() {
+    document.write(`You have clicked ${this.state.count} of times.`);
+  }
+
+  componentDidUpdate() {
+    document.write(`You have clicked ${this.state.count} of times.`);
+  }
+
   render() {
     const { count } = this.state.count;
     return (
       <div className="App">
         hello world
-        <button type="button" onClick={this.incrementCount}>
-          Click me{' '}
-        </button>
+        <button onClick={this.incrementCount}>Click me </button>
         {count}
         <h2>Toggle lights</h2>
         <div
