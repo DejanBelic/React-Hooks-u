@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    count: 0,
+    isOn: false
+  };
+
+  incrementCount = () => {
+    this.setState(prevState => ({
+      count: prevState.count + 1
+    }));
+  };
+
+  toggleLight = () => {
+    this.setState(prevState => ({
+      isOn: !prevState.isOn
+    }));
+  };
+
   render() {
+    const { count } = this.state.count;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        hello world
+        <button type="button" onClick={this.incrementCount}>
+          Click me{' '}
+        </button>
+        {count}
+        <h2>Toggle lights</h2>
+        <div
+          style={{
+            height: '50px',
+            width: '50px',
+            background: this.state.isOn ? 'yellow' : 'grey'
+          }}
+          onClick={this.toggleLight}
+        />
       </div>
     );
   }
